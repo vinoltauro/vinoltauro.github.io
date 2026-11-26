@@ -1933,7 +1933,7 @@ main > section:first-child {
 
 .life-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 .life-tile {
@@ -2137,6 +2137,152 @@ main > section:first-child {
   .print {
     width: 180px;
   }
+}
+
+/* Sketches: tiny line-drawing jokes at the foot of the Outside of work tiles. */
+.life-tile {
+  display: flex;
+  flex-direction: column;
+}
+.sketch {
+  margin-top: auto;
+  padding-top: 16px;
+}
+.sketch svg {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  overflow: visible;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sk-ground {
+  stroke: var(--faint);
+  stroke-width: 1.5;
+}
+.sk-head {
+  fill: var(--ink);
+  stroke: none;
+}
+.sk-torso {
+  stroke-width: 3.4;
+}
+.sk-block {
+  fill: var(--surface);
+  stroke-width: 1.6;
+}
+.sk-boulder circle,
+.sk-block.sk-b3 {
+  fill: var(--accent);
+  stroke: none;
+}
+.sk-crack {
+  stroke: color-mix(in srgb, var(--bg) 55%, transparent);
+  stroke-width: 1.2;
+}
+.sk-boulder,
+.sk-block {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.sk-arms-shrug {
+  opacity: 0;
+}
+.sketch-caption {
+  margin-top: 6px;
+  color: var(--muted);
+  font: 500 12px/1.4 var(--mono);
+  letter-spacing: 0.04em;
+}
+
+/* Resting poses (reduced motion / no JS): Sisyphus mid-push; the tower standing. */
+.sketch-sisyphus .sk-man,
+.sketch-sisyphus .sk-boulder {
+  transform: translate(71px, -18.7px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Before playing */
+  .js .sketch-sisyphus:not(.is-playing) .sk-man,
+  .js .sketch-sisyphus:not(.is-playing) .sk-boulder {
+    transform: none;
+  }
+  .js .sketch-builder:not(.is-playing) .sk-block {
+    opacity: 0;
+  }
+  .js .sketch:not(.is-playing) .sketch-caption {
+    opacity: 0;
+  }
+
+  /* Shared: the shrug and the caption land at the end. */
+  .sketch.is-playing .sk-arms-work {
+    animation: sk-arms-work 3.6s linear forwards;
+  }
+  .sketch.is-playing .sk-arms-shrug {
+    animation: sk-arms-shrug 3.6s linear forwards;
+  }
+  .sketch.is-playing .sketch-caption {
+    animation: sk-caption 3.6s var(--ease) forwards;
+  }
+
+  /* Sisyphus */
+  .sketch-sisyphus.is-playing .sk-man {
+    animation: sis-man 3.6s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  }
+  .sketch-sisyphus.is-playing .sk-boulder {
+    animation: sis-boulder 3.6s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  }
+
+  /* Builder: blocks land one by one, the top one wobbles and topples off. */
+  .sketch-builder.is-playing .sk-b1 {
+    animation: bld-drop 3.6s var(--ease) forwards;
+  }
+  .sketch-builder.is-playing .sk-b2 {
+    animation: bld-drop 3.6s var(--ease) 0.45s both;
+  }
+  .sketch-builder.is-playing .sk-b3 {
+    animation: bld-top 3.6s linear forwards;
+  }
+}
+
+@keyframes sis-man {
+  0% { transform: none; }
+  50%, 100% { transform: translate(142px, -37.4px); }
+}
+@keyframes sis-boulder {
+  0% { transform: none; }
+  50%, 56% { transform: translate(142px, -37.4px) rotate(300deg); }
+  82%, 100% { transform: none; }
+}
+@keyframes bld-drop {
+  0% { opacity: 0; transform: translateY(-34px); }
+  6% { opacity: 1; }
+  14%, 100% { opacity: 1; transform: none; }
+}
+@keyframes bld-top {
+  0%, 25% { opacity: 0; transform: translateY(-34px); }
+  28% { opacity: 1; }
+  37% { opacity: 1; transform: none; }
+  44% { transform: rotate(-7deg); }
+  50% { transform: rotate(8deg); }
+  54% { transform: translate(3px, 0) rotate(14deg); }
+  72%, 100% { opacity: 1; transform: translate(26px, 22px) rotate(180deg); }
+}
+@keyframes sk-arms-work {
+  0%, 80% { opacity: 1; }
+  84%, 100% { opacity: 0; }
+}
+@keyframes sk-arms-shrug {
+  0%, 80% { opacity: 0; }
+  84%, 100% { opacity: 1; }
+}
+@keyframes sk-caption {
+  0%, 82% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: none; }
 }
 
 /* Philosophy pull quote. */

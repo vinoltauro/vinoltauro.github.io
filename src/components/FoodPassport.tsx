@@ -3,7 +3,6 @@ import { site } from '../content'
 import { FeatureCard } from './FeatureCard'
 import { Flag, type FlagCode } from './Flag'
 import { DriftRow } from './Gallery'
-import { DealtHand } from './Life'
 import { lqip } from '../lib/lqip'
 
 /* Hand-set tilts, so the prints look placed by hand rather than random each render. */
@@ -11,10 +10,9 @@ const PRINT_TILT = [-2.6, 1.8, -1.2, 2.4, -2, 1.4, -2.8, 2.1, -1.6, 2.6, -1.9]
 
 type Dish = { src: string; width: number; height: number; label: string; tag: string; alt: string; flag?: FlagCode }
 
-/** Food, in one card: what I cook at home (the fan), the cuisines I've tried (flags), then the dishes. */
+/** Eating out in Dublin: the cuisines (flags), then a row of the dishes. */
 export function FoodPassport() {
   const e = site.eatingOut
-  const cooking = site.life.find((it) => it.photos && it.photos.length > 0)
   const dishes = e.photos as Dish[]
 
   return (
@@ -37,8 +35,7 @@ export function FoodPassport() {
             </ul>
           </>
         }
-        visual={cooking?.photos ? <DealtHand photos={cooking.photos} /> : undefined}
-        foot={{ note: `${cooking?.photos?.length ?? 0} cooked at home · ${dishes.length} eaten out` }}
+        foot={{ note: 'A few favourites · many more eaten' }}
       />
 
       <DriftRow label="Dishes from around Dublin">

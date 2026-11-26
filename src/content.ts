@@ -115,6 +115,9 @@ export type Interest = {
   body: string
   /** Optional pull quote shown under the body. */
   quote?: { text: string; by: string }
+  /** A little drawing at the bottom of the tile, and its caption. */
+  sketch?: 'builder' | 'sisyphus'
+  joke?: string
   /** Optional photos (e.g. dishes), shown as a fanned hand of cards. Files live in /public/life. */
   photos?: Array<{ src: string; alt: string; label: string }>
 }
@@ -711,7 +714,7 @@ export const site = {
   /** Photography: a pinned horizontal filmstrip in the Outside of work section. Labels are drafts. */
   photography: {
     title: 'I photograph Dublin',
-    body: "Wherever the walk takes me: Trinity’s campanile, the cliffs at Howth, a pink sky over College Green.",
+    body: "Somewhere between meals, I’m usually out with my camera (okay, my phone): Trinity’s campanile, the cliffs at Howth, a pink sky over College Green.",
     photos: [
       { src: '/dublin/campanile.webp', width: 450, height: 1000, label: 'The Campanile, Trinity', alt: "Trinity College’s Campanile bell tower against a deep blue sky" },
       { src: '/dublin/howth-head.webp', width: 562, height: 1000, label: 'Howth Head', alt: 'The Baily Lighthouse on Howth Head above a blue sea, with yellow gorse in the foreground' },
@@ -729,41 +732,30 @@ export const site = {
 
   /** Opening line of Outside of work, in my own words. */
   lifeIntro:
-    "Dublin has been kind to me. These days I work part-time as a customer assistant at Holland & Barrett while I look for my next engineering role. The rest of the time, I’m usually making something, reading, lifting, cooking, or out with a camera.",
+    "Dublin has been kind to me. These days I work part-time as a customer assistant at Holland & Barrett while I look for my next engineering role. Outside of that, you’ll find me building something, reading, eating my way around the city, or out photographing it.",
 
   life: [
     {
-      icon: 'music',
-      title: 'I make things',
-      body: "Code isn’t the only thing I make. I’m a trained classical guitarist and I compose my own music. Anything that lets the creative energy out, I’m in.",
+      icon: 'code',
+      title: 'I love to build',
+      body: "I’ve always loved to build and create. Writing code, composing music (I’m a trained classical guitarist), anything that lets the creative energy out. It’s the same itch that got me into engineering in the first place.",
+      sketch: 'builder',
+      joke: 'Me, deploying on a Friday.',
     },
     {
       icon: 'books',
-      title: 'I read philosophy',
+      title: 'I read philosophy… well, sometimes',
       body: 'Mostly the absurdists. They keep me honest: no guarantees, keep pushing the boulder anyway, and find the fun in it.',
       quote: { text: 'One must imagine Sisyphus happy.', by: 'Albert Camus' },
-    },
-    {
-      icon: 'gym',
-      title: 'I train',
-      body: "The gym is where I switch off. Turning up is most of the work, which is true of most things worth doing.",
-    },
-    {
-      icon: 'cooking',
-      title: 'Cooking',
-      body: 'I love to cook. A few things I\'ve made at home:',
-      photos: [
-        { src: '/life/biryani.webp', label: 'Biryani', alt: 'Chicken biryani on a blue plate with pickled red onions, crispy fried onions and a wedge of lime' },
-        { src: '/life/tandoori.webp', label: 'Tandoori & naan', alt: 'Tandoori chicken leg with a herb naan, spiced rice and a wedge of lime' },
-        { src: '/life/chicken-spaghetti.webp', label: 'Crispy chicken', alt: 'Crispy breaded chicken with chilli spaghetti and stir-fried vegetables in a white bowl' },
-      ],
+      sketch: 'sisyphus',
+      joke: 'Me, job hunting. Happily.',
     },
   ] satisfies Interest[],
 
   /** Eating out, rendered as a food passport: cuisine stamps plus a row of polaroids. */
   eatingOut: {
-    title: 'I cook, and I eat my way around Dublin',
-    body: "I love to cook, and I love to eat. Moving here meant a whole city of cuisines to try, and I’m working through them.",
+    title: 'I eat my way around Dublin',
+    body: "My Dublin food tour started with a Centra chicken fillet roll, as all good Irish stories do, and hasn’t slowed down since: jollof, pulpo, eels, a bowl of Liao Za Lie, and far more cuisines than fit on this page. A few favourites:",
     cuisines: [
       { name: 'Irish', flag: 'IE' },
       { name: 'Spanish', flag: 'ES' },
