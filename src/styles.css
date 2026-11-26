@@ -2759,6 +2759,21 @@ main > section:first-child {
   width: 100%;
   height: 100%;
 }
+.globe {
+  justify-self: center;
+  width: 100%;
+  max-width: 260px;
+}
+.globe canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: grab;
+  touch-action: pan-y; /* vertical swipes still scroll the page on phones */
+}
+.globe canvas.is-dragging {
+  cursor: grabbing;
+}
 .cuisines {
   display: flex;
   flex-wrap: wrap;
@@ -2767,7 +2782,26 @@ main > section:first-child {
   padding: 0;
   list-style: none;
 }
+.cuisines button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.cuisines li:has(button[aria-pressed='true']),
+.cuisines li:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+  color: var(--accent);
+}
 .cuisines li {
+  transition:
+    border-color var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease);
   display: inline-flex;
   align-items: center;
   gap: 8px;

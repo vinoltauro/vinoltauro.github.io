@@ -710,7 +710,7 @@ export const site = {
 
   /** Opening line of Outside of work, in my own words. */
   lifeIntro:
-    "Dublin has been kind to me. These days I work part-time as a customer assistant at Holland & Barrett while I look for my next engineering role. Outside of that, you’ll find me playing guitar, reading, eating my way around the city, or out photographing it.",
+    "Dublin has been kind to me. These days I work part-time as a customer assistant at Holland & Barrett while I look for my next engineering role. Outside of that, you’ll find me playing guitar, reading, eating my way around the world’s cuisines, or out photographing Dublin.",
 
   life: [
     {
@@ -732,17 +732,18 @@ export const site = {
 
   /** Eating out, rendered as a food passport: cuisine stamps plus a row of polaroids. */
   eatingOut: {
-    title: 'I eat my way around Dublin',
-    body: "My Dublin food tour started with a Centra chicken fillet roll, as all good Irish stories do, and hasn’t slowed down since: jollof, pulpo, eels, a bowl of Liao Za Lie, and far more cuisines than fit on this page. A few favourites:",
+    title: 'I eat my way around the world',
+    body: "I love trying cuisines from around the world, and the goal is simple: eat them all. My tour started in Dublin with a Centra chicken fillet roll, as all good Irish stories do, and hasn’t slowed down since: jollof, pulpo, eels, a bowl of Liao Za Lie, and far more than fit on this page. A few favourites:",
     cuisines: [
-      { name: 'Irish', flag: 'IE' },
-      { name: 'Spanish', flag: 'ES' },
-      { name: 'Nigerian', flag: 'NG' },
-      { name: 'Somali', flag: 'SO' },
-      { name: 'Chinese', flag: 'CN' },
-      { name: 'Mongolian', flag: 'MN' },
-      { name: 'Japanese', flag: 'JP' },
-    ] as Array<{ name: string; flag: FlagCode }>,
+      // lon/lat: where the globe turns to. Order must match scripts/build-globe.mjs.
+      { name: 'Irish', flag: 'IE', lon: -7.6, lat: 53.2 },
+      { name: 'Spanish', flag: 'ES', lon: -3.7, lat: 40.2 },
+      { name: 'Nigerian', flag: 'NG', lon: 8.1, lat: 9.6 },
+      { name: 'Somali', flag: 'SO', lon: 46.2, lat: 6.1 },
+      { name: 'Chinese', flag: 'CN', lon: 104.2, lat: 35.9 },
+      { name: 'Mongolian', flag: 'MN', lon: 103.8, lat: 46.9 },
+      { name: 'Japanese', flag: 'JP', lon: 138.3, lat: 36.2 },
+    ] as Array<{ name: string; flag: FlagCode; lon: number; lat: number }>,
     photos: [
       { src: '/eat/chicken-fillet-roll.webp', width: 640, height: 800, label: 'Chicken fillet roll', flag: 'IE' as FlagCode, tag: 'Irish · Centra', alt: 'A chicken fillet roll cut open, stuffed with breaded chicken, coleslaw and cheese, in a compostable wrapper' },
       { src: '/eat/pulpo.webp', width: 640, height: 800, label: 'Pulpo a la gallega', flag: 'ES' as FlagCode, tag: 'Spanish', alt: 'Slices of grilled octopus on potatoes dusted with paprika, on a Spanish restaurant menu' },
