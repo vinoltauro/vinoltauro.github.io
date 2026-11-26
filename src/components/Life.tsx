@@ -3,7 +3,7 @@ import { useRef, useState, type CSSProperties } from 'react'
 import type { Interest } from '../content'
 import { Icon } from './Icon'
 import { Reveal } from './Reveal'
-import { Builder, Sisyphus } from './Sketch'
+import { Guitarist, Sisyphus } from './Sketch'
 import { lqip } from '../lib/lqip'
 
 /**
@@ -58,7 +58,7 @@ export function Life({ items }: { items: Interest[] }) {
                 <cite>{it.quote.by}</cite>
               </blockquote>
             )}
-            {it.joke && (it.sketch === 'builder' ? <Builder caption={it.joke} /> : <Sisyphus caption={it.joke} />)}
+            {it.joke && (it.sketch === 'guitar' ? <Guitarist caption={it.joke} /> : <Sisyphus caption={it.joke} />)}
           </Reveal>
         ))}
     </ul>

@@ -91,6 +91,9 @@ export function Contact() {
   ]
   return (
     <>
+      <Reveal as="p" className="contact-note">
+        {contact.note}
+      </Reveal>
       <Reveal>
         <CopyEmail />
       </Reveal>

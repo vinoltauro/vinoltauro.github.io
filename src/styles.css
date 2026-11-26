@@ -20,6 +20,12 @@
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1); /* same curve as Motion's EASE */
+  /* One scale for corners and motion, so everything feels like it belongs together. */
+  --r-lg: 20px; /* cards */
+  --r-md: 12px; /* tiles, screenshots */
+  --r-sm: 9px; /* icon tiles, small chips */
+  --t-fast: 0.3s; /* hovers, small state changes */
+  --t-slow: 0.5s; /* larger changes */
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
   --gutter-l: max(28px, env(safe-area-inset-left, 0px));
@@ -69,11 +75,11 @@
 .theme-anim *::before,
 .theme-anim *::after {
   transition:
-    background-color 0.5s var(--ease-in-out),
-    color 0.5s var(--ease-in-out),
-    border-color 0.5s var(--ease-in-out),
-    fill 0.5s var(--ease-in-out),
-    stroke 0.5s var(--ease-in-out) !important;
+    background-color var(--t-slow) var(--ease-in-out),
+    color var(--t-slow) var(--ease-in-out),
+    border-color var(--t-slow) var(--ease-in-out),
+    fill var(--t-slow) var(--ease-in-out),
+    stroke var(--t-slow) var(--ease-in-out) !important;
 }
 
 /* ==========================================================================
@@ -176,7 +182,7 @@ section:focus {
   flex: none;
   width: 30px;
   height: 30px;
-  border-radius: 9px;
+  border-radius: var(--r-sm);
   background: var(--accent-soft);
   color: var(--accent);
 }
@@ -272,10 +278,10 @@ img.lqip {
   padding-top: env(safe-area-inset-top, 0px);
   border-bottom: 1px solid transparent;
   transition:
-    background-color 0.5s var(--ease),
-    border-color 0.5s var(--ease),
-    -webkit-backdrop-filter 0.5s var(--ease),
-    backdrop-filter 0.5s var(--ease);
+    background-color var(--t-slow) var(--ease),
+    border-color var(--t-slow) var(--ease),
+    -webkit-backdrop-filter var(--t-slow) var(--ease),
+    backdrop-filter var(--t-slow) var(--ease);
 }
 .topbar.is-docked {
   background: var(--bar);
@@ -305,9 +311,9 @@ img.lqip {
   transform: translate3d(0, 6px, 0);
   pointer-events: none;
   transition:
-    opacity 0.6s var(--ease),
-    transform 0.6s var(--ease),
-    color 0.25s var(--ease);
+    opacity var(--t-slow) var(--ease),
+    transform var(--t-slow) var(--ease),
+    color var(--t-fast) var(--ease);
 }
 .is-docked .topbar-name,
 .is-docked .topbar-contact {
@@ -356,9 +362,9 @@ img.lqip {
   color: var(--muted);
   cursor: pointer;
   transition:
-    color 0.25s var(--ease),
-    background-color 0.25s var(--ease),
-    transform 0.3s var(--ease);
+    color var(--t-fast) var(--ease),
+    background-color var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease);
 }
 .theme-toggle:hover {
   color: var(--ink);
@@ -371,8 +377,8 @@ img.lqip {
   grid-area: 1 / 1;
   vertical-align: 0;
   transition:
-    opacity 0.45s var(--ease),
-    transform 0.6s var(--ease);
+    opacity var(--t-slow) var(--ease),
+    transform var(--t-slow) var(--ease);
 }
 /* Light: sun shown. Dark: moon shown. The other rotates away. */
 .ico-moon {
@@ -417,7 +423,7 @@ img.lqip {
   list-style: none;
 }
 .toc {
-  transition: opacity 0.35s var(--ease);
+  transition: opacity var(--t-fast) var(--ease);
 }
 .toc.is-covered,
 .toc.is-hero {
@@ -453,7 +459,7 @@ img.lqip {
   bottom: -7px;
   width: 1px;
   background: var(--line);
-  transition: background-color 0.4s var(--ease);
+  transition: background-color var(--t-slow) var(--ease);
 }
 .toc-li[data-state='passed']::before {
   background: var(--accent);
@@ -470,7 +476,7 @@ img.lqip {
   font: 500 14px/1.3 var(--sans);
   text-align: left;
   cursor: pointer;
-  transition: color 0.25s var(--ease);
+  transition: color var(--t-fast) var(--ease);
 }
 .toc-item:hover {
   color: var(--ink);
@@ -483,9 +489,9 @@ img.lqip {
   border: 1.5px solid var(--line);
   background: var(--bg);
   transition:
-    background-color 0.4s var(--ease),
-    border-color 0.4s var(--ease),
-    box-shadow 0.4s var(--ease);
+    background-color var(--t-slow) var(--ease),
+    border-color var(--t-slow) var(--ease),
+    box-shadow var(--t-slow) var(--ease);
 }
 .toc-li[data-state='passed'] .toc-dot {
   border-color: var(--accent);
@@ -527,7 +533,7 @@ img.lqip {
   font: 500 13px/1.35 var(--sans);
   text-align: left;
   cursor: pointer;
-  transition: color 0.25s var(--ease);
+  transition: color var(--t-fast) var(--ease);
 }
 .toc-subitem:hover {
   color: var(--ink);
@@ -538,7 +544,7 @@ img.lqip {
 }
 @media (prefers-reduced-motion: no-preference) {
   .toc-sub {
-    animation: toc-open 0.4s var(--ease);
+    animation: toc-open var(--t-slow) var(--ease);
   }
 }
 @keyframes toc-open {
@@ -573,8 +579,8 @@ img.lqip {
     transform: translateX(-6px);
     pointer-events: none;
     transition:
-      opacity 0.25s var(--ease),
-      transform 0.3s var(--ease);
+      opacity var(--t-fast) var(--ease),
+      transform var(--t-fast) var(--ease);
   }
   .toc-item:hover .toc-text,
   .toc-item:focus-visible .toc-text {
@@ -792,12 +798,12 @@ main > section:first-child {
   position: relative;
   color: var(--ink);
   transition:
-    opacity 0.55s var(--ease),
-    filter 0.55s var(--ease);
+    opacity var(--t-slow) var(--ease),
+    filter var(--t-slow) var(--ease);
 }
 .word-text {
   display: inline-block;
-  transition: color 0.45s var(--ease);
+  transition: color var(--t-slow) var(--ease);
 }
 .words.has-active .word:not(.is-active) {
   opacity: 0.16;
@@ -827,7 +833,7 @@ main > section:first-child {
 .cap-num {
   color: var(--accent);
   opacity: 0;
-  transition: opacity 0.35s var(--ease);
+  transition: opacity var(--t-fast) var(--ease);
 }
 .word.is-active .cap-num {
   opacity: 1;
@@ -841,8 +847,8 @@ main > section:first-child {
   transform: scaleX(0);
   transform-origin: left center;
   transition:
-    transform 0.6s var(--ease),
-    opacity 0.4s var(--ease);
+    transform var(--t-slow) var(--ease),
+    opacity var(--t-slow) var(--ease);
 }
 .cap-label {
   color: var(--ink);
@@ -850,9 +856,9 @@ main > section:first-child {
   transform: translate3d(-10px, 0, 0);
   filter: blur(6px);
   transition:
-    opacity 0.5s var(--ease),
-    transform 0.6s var(--ease),
-    filter 0.5s var(--ease);
+    opacity var(--t-slow) var(--ease),
+    transform var(--t-slow) var(--ease),
+    filter var(--t-slow) var(--ease);
 }
 .word.is-active .cap-line {
   opacity: 1;
@@ -931,7 +937,7 @@ main > section:first-child {
   font: 400 11.5px/1.4 var(--mono);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  transition: color 0.3s var(--ease);
+  transition: color var(--t-fast) var(--ease);
 }
 .scroll-cue:hover {
   color: var(--ink);
@@ -975,7 +981,7 @@ main > section:first-child {
 .logo img {
   display: block;
   max-width: none;
-  transition: filter 0.6s var(--ease);
+  transition: filter var(--t-slow) var(--ease);
 }
 .logo-dark {
   display: none !important;
@@ -1041,10 +1047,10 @@ main > section:first-child {
   border: 1.5px solid var(--line);
   background: var(--bg);
   transition:
-    background-color 0.6s var(--ease),
-    border-color 0.6s var(--ease),
-    box-shadow 0.6s var(--ease),
-    transform 0.6s var(--ease);
+    background-color var(--t-slow) var(--ease),
+    border-color var(--t-slow) var(--ease),
+    box-shadow var(--t-slow) var(--ease),
+    transform var(--t-slow) var(--ease);
 }
 .role-node.is-lit {
   border-color: var(--accent);
@@ -1056,12 +1062,12 @@ main > section:first-child {
   --slot: 40px;
   padding: clamp(22px, 4vw, 36px);
   border: 1px solid var(--line);
-  border-radius: 22px;
+  border-radius: var(--r-lg);
   background: var(--surface);
   box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 4%, transparent);
   transition:
-    border-color 0.5s var(--ease),
-    box-shadow 0.6s var(--ease);
+    border-color var(--t-slow) var(--ease),
+    box-shadow var(--t-slow) var(--ease);
 }
 @media (hover: hover) {
   .role-card:hover {
@@ -1119,8 +1125,8 @@ main > section:first-child {
   font: 400 11.5px/1.2 var(--mono);
   white-space: nowrap;
   transition:
-    color 0.3s var(--ease),
-    border-color 0.3s var(--ease);
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
 }
 .role-link:hover {
   color: var(--accent);
@@ -1197,7 +1203,7 @@ main > section:first-child {
 .media-frame {
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: var(--r-md);
   background: #050607;
   box-shadow: 0 12px 30px -20px color-mix(in srgb, var(--ink) 45%, transparent);
 }
@@ -1271,8 +1277,8 @@ main > section:first-child {
   opacity: 0;
   transform: scale(0.9);
   transition:
-    opacity 0.25s var(--ease),
-    transform 0.25s var(--ease);
+    opacity var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease);
 }
 .media-open:hover .media-zoom,
 .media-open:focus-visible .media-zoom {
@@ -1310,7 +1316,7 @@ main > section:first-child {
 }
 @media (prefers-reduced-motion: no-preference) {
   .lightbox[open] .lightbox-figure {
-    animation: lightbox-in 0.35s var(--ease);
+    animation: lightbox-in var(--t-fast) var(--ease);
   }
 }
 @keyframes lightbox-in {
@@ -1330,7 +1336,7 @@ main > section:first-child {
 }
 .lightbox-frame {
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--r-md);
   box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7);
   pointer-events: auto;
 }
@@ -1378,7 +1384,7 @@ main > section:first-child {
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
-  transition: background-color 0.2s var(--ease);
+  transition: background-color var(--t-fast) var(--ease);
 }
 .lightbox-close:hover,
 .lightbox-nav:hover:not(:disabled) {
@@ -1421,9 +1427,9 @@ main > section:first-child {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 16px 16px 15px;
+  padding: 18px;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: var(--r-md);
   background: var(--bg);
 }
 .metric-value {
@@ -1477,15 +1483,15 @@ main > section:first-child {
 .course-list li {
   padding: 8px 13px;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: var(--r-sm);
   background: var(--bg);
   color: var(--ink);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.3;
   transition:
-    border-color 0.3s var(--ease),
-    color 0.3s var(--ease);
+    border-color var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease);
 }
 .course-list li:hover {
   border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
@@ -1508,9 +1514,9 @@ main > section:first-child {
   font: 600 14px/1 var(--sans);
   cursor: pointer;
   transition:
-    border-color 0.3s var(--ease),
-    background-color 0.3s var(--ease),
-    transform 0.3s var(--ease);
+    border-color var(--t-fast) var(--ease),
+    background-color var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease);
 }
 .role-toggle:hover {
   border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
@@ -1530,7 +1536,7 @@ main > section:first-child {
 .chev {
   font-size: 13px;
   vertical-align: 0;
-  transition: transform 0.5s var(--ease);
+  transition: transform var(--t-slow) var(--ease);
 }
 .role-toggle[aria-expanded='true'] .chev,
 .chev.up {
@@ -1552,9 +1558,9 @@ main > section:first-child {
   grid-column: 1 / -1;
 }
 .detail-tile {
-  padding: 18px 18px 20px;
+  padding: 18px;
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: var(--r-md);
   background: var(--bg);
 }
 .detail-tile dt {
@@ -1596,12 +1602,12 @@ main > section:first-child {
   }
   .role-card {
     padding: 20px 18px;
-    border-radius: 18px;
+    border-radius: var(--r-lg);
   }
   .metric-tiles li,
   .detail-tile {
     padding: 14px 14px 15px;
-    border-radius: 12px;
+    border-radius: var(--r-md);
   }
   .metric-label {
     font-size: 12px;
@@ -1631,7 +1637,7 @@ main > section:first-child {
   .course-list li {
     padding: 6px 10px;
     font-size: 13px;
-    border-radius: 8px;
+    border-radius: var(--r-sm);
   }
 }
 
@@ -1667,7 +1673,7 @@ main > section:first-child {
   background: transparent;
   color: var(--ink);
   cursor: pointer;
-  transition: background-color 0.2s var(--ease);
+  transition: background-color var(--t-fast) var(--ease);
 }
 .project-pill button:hover:not(:disabled) {
   background: var(--accent-soft);
@@ -1719,8 +1725,8 @@ main > section:first-child {
   cursor: pointer;
   white-space: nowrap;
   transition:
-    color 0.25s var(--ease),
-    border-color 0.25s var(--ease);
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
 }
 .skim-toggle:hover {
   color: var(--ink);
@@ -1732,7 +1738,7 @@ main > section:first-child {
   height: 15px;
   border-radius: 100px;
   background: var(--line);
-  transition: background-color 0.25s var(--ease);
+  transition: background-color var(--t-fast) var(--ease);
 }
 .skim-switch span {
   position: absolute;
@@ -1743,7 +1749,7 @@ main > section:first-child {
   border-radius: 50%;
   background: var(--surface);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s var(--ease);
+  transition: transform var(--t-fast) var(--ease);
 }
 .skim-toggle[aria-checked='true'] {
   color: var(--accent);
@@ -1868,8 +1874,8 @@ main > section:first-child {
   font-size: 13.5px;
   line-height: 1.35;
   transition:
-    color 0.3s var(--ease),
-    border-color 0.3s var(--ease);
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
 }
 .skill-chips li:hover {
   color: var(--ink);
@@ -1903,9 +1909,9 @@ main > section:first-child {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 16px;
+  padding: 18px;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: var(--r-md);
   background: var(--surface);
 }
 .achievement-tiles .metric-value {
@@ -1937,11 +1943,11 @@ main > section:first-child {
   gap: 12px;
 }
 .life-tile {
-  padding: 22px 20px 24px;
+  padding: clamp(20px, 3vw, 26px);
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--r-lg);
   background: var(--surface);
-  transition: border-color 0.4s var(--ease);
+  transition: border-color var(--t-slow) var(--ease);
 }
 @media (hover: hover) {
   .life-tile:hover {
@@ -1954,9 +1960,9 @@ main > section:first-child {
 .life-icon {
   width: 38px;
   height: 38px;
-  border-radius: 11px;
+  border-radius: var(--r-sm);
   margin-bottom: 16px;
-  transition: transform 0.5s var(--ease);
+  transition: transform var(--t-slow) var(--ease);
 }
 .life-title {
   margin-bottom: 6px;
@@ -1994,7 +2000,7 @@ main > section:first-child {
   width: var(--w);
   margin: calc(var(--w) * -0.625) 0 0 calc(var(--w) * -0.5);
   padding: 6px 6px 0;
-  border-radius: 14px;
+  border-radius: var(--r-md);
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow:
@@ -2004,8 +2010,8 @@ main > section:first-child {
   transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(var(--s));
   transition:
     transform 0.9s var(--ease) calc(var(--n) * 90ms),
-    opacity 0.5s var(--ease) calc(var(--n) * 90ms),
-    box-shadow 0.5s var(--ease);
+    opacity var(--t-slow) var(--ease) calc(var(--n) * 90ms),
+    box-shadow var(--t-slow) var(--ease);
 }
 .hand-card img {
   display: block;
@@ -2013,7 +2019,7 @@ main > section:first-child {
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: 9px;
+  border-radius: var(--r-sm);
 }
 .hand-card figcaption {
   padding: 7px 2px 8px;
@@ -2096,8 +2102,8 @@ main > section:first-child {
     0 16px 34px -18px rgba(0, 0, 0, 0.45);
   transform: rotate(var(--rot));
   transition:
-    transform 0.5s var(--ease),
-    box-shadow 0.5s var(--ease);
+    transform var(--t-slow) var(--ease),
+    box-shadow var(--t-slow) var(--ease);
   scroll-snap-align: center;
 }
 .print img {
@@ -2139,7 +2145,7 @@ main > section:first-child {
   }
 }
 
-/* Sketches: tiny line-drawing jokes at the foot of the Outside of work tiles. */
+/* Sketches: two tiny flat-2D cartoons at the foot of the Outside of work tiles. */
 .life-tile {
   display: flex;
   flex-direction: column;
@@ -2151,45 +2157,88 @@ main > section:first-child {
 .sketch svg {
   display: block;
   width: 100%;
-  max-width: 260px;
+  max-width: 280px;
   height: auto;
   overflow: visible;
   fill: none;
-  stroke: var(--ink);
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke: none;
 }
-.sk-ground {
+/* rig parts rotate about their joint (--o), in SVG user units */
+.sketch svg g[style*='--o'] {
+  transform-box: view-box;
+  transform-origin: var(--o);
+}
+.sk-ground,
+.sk-prop-line {
   stroke: var(--faint);
   stroke-width: 1.5;
+  stroke-linecap: round;
 }
-.sk-head {
+.sk-prop {
+  fill: color-mix(in srgb, var(--faint) 45%, transparent);
+}
+.sk-fill {
   fill: var(--ink);
-  stroke: none;
 }
-.sk-torso {
+.sk-limb {
+  stroke: var(--ink);
+  stroke-width: 4.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.sk-limb-thin {
   stroke-width: 3.4;
 }
-.sk-block {
-  fill: var(--surface);
-  stroke-width: 1.6;
+.sk-foot {
+  stroke: var(--ink);
+  stroke-width: 3.2;
+  stroke-linecap: round;
 }
-.sk-boulder circle,
-.sk-block.sk-b3 {
+.sk-rock,
+.sk-gbody {
   fill: var(--accent);
-  stroke: none;
 }
-.sk-crack {
-  stroke: color-mix(in srgb, var(--bg) 55%, transparent);
+.sk-rock-line {
+  stroke: color-mix(in srgb, var(--surface) 55%, transparent);
   stroke-width: 1.2;
+  stroke-linecap: round;
+  fill: none;
 }
+.sk-hole {
+  fill: color-mix(in srgb, var(--ink) 75%, transparent);
+}
+.sk-neck {
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.sk-headstock {
+  fill: var(--ink);
+}
+.sk-peg-c {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 1.3;
+}
+.sk-wave,
+.sk-note {
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.sk-wave {
+  opacity: 0;
+}
+.sk-note,
 .sk-boulder,
-.sk-block {
+.sk-peg {
   transform-box: fill-box;
   transform-origin: center;
 }
-.sk-arms-shrug {
+.sk-arms {
   opacity: 0;
 }
 .sketch-caption {
@@ -2199,89 +2248,235 @@ main > section:first-child {
   letter-spacing: 0.04em;
 }
 
-/* Resting poses (reduced motion / no JS): Sisyphus mid-push; the tower standing. */
-.sketch-sisyphus .sk-man,
+/* ---------- Resting frames (reduced motion / no JS / before playing) ---------- */
+/* Sisyphus mid-push, mid-stride */
+.sketch-sisyphus .sk-runner,
+.sketch-sisyphus .sk-boulder-track {
+  transform: translateX(70px);
+}
 .sketch-sisyphus .sk-boulder {
-  transform: translate(71px, -18.7px);
+  transform: rotate(365deg);
+}
+.sk-leg-back {
+  transform: rotate(28deg);
+}
+.sk-leg-back .sk-shin {
+  transform: rotate(-10deg);
+}
+.sk-leg-front {
+  transform: rotate(-24deg);
+}
+.sk-leg-front .sk-shin {
+  transform: rotate(34deg);
+}
+.sketch-sisyphus .sk-arms-push {
+  opacity: 1;
+}
+/* Guitarist playing, one note up */
+.sketch-guitar .sk-arms-play {
+  opacity: 1;
+}
+.sk-note {
+  opacity: 0;
+}
+.sk-n2 {
+  opacity: 1;
+  transform: translate(8px, -12px) rotate(-10deg);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Before playing */
-  .js .sketch-sisyphus:not(.is-playing) .sk-man,
+  .js .sketch-sisyphus:not(.is-playing) .sk-runner,
+  .js .sketch-sisyphus:not(.is-playing) .sk-boulder-track,
   .js .sketch-sisyphus:not(.is-playing) .sk-boulder {
     transform: none;
   }
-  .js .sketch-builder:not(.is-playing) .sk-block {
-    opacity: 0;
-  }
+  .js .sketch:not(.is-playing) .sk-note,
   .js .sketch:not(.is-playing) .sketch-caption {
     opacity: 0;
   }
 
-  /* Shared: the shrug and the caption land at the end. */
-  .sketch.is-playing .sk-arms-work {
-    animation: sk-arms-work 3.6s linear forwards;
+  /* ---------- Sisyphus (4.6s) ----------
+     0-50% walk the boulder up | 50-60% arms up, a little hop | 60-82% gravity wins, with a bounce |
+     84-100% he shrugs; caption */
+  .sketch-sisyphus.is-playing .sk-runner {
+    animation: sis-run 4.6s forwards;
   }
-  .sketch.is-playing .sk-arms-shrug {
-    animation: sk-arms-shrug 3.6s linear forwards;
+  .sketch-sisyphus.is-playing .sk-body {
+    animation: sis-hop 4.6s forwards;
   }
-  .sketch.is-playing .sketch-caption {
-    animation: sk-caption 3.6s var(--ease) forwards;
-  }
-
-  /* Sisyphus */
-  .sketch-sisyphus.is-playing .sk-man {
-    animation: sis-man 3.6s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  .sketch-sisyphus.is-playing .sk-boulder-track {
+    animation: sis-rock-move 4.6s forwards;
   }
   .sketch-sisyphus.is-playing .sk-boulder {
-    animation: sis-boulder 3.6s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+    animation: sis-rock-spin 4.6s forwards;
+  }
+  /* walk cycle: 0.46s per stride, legs half a stride apart; stops at the top */
+  .sketch-sisyphus.is-playing .sk-leg-back {
+    animation: sis-thigh 0.46s ease-in-out 5 both;
+  }
+  .sketch-sisyphus.is-playing .sk-leg-back .sk-shin {
+    animation: sis-shin 0.46s ease-in-out 5 both;
+  }
+  .sketch-sisyphus.is-playing .sk-leg-front {
+    animation: sis-thigh 0.46s ease-in-out -0.23s 5 both;
+  }
+  .sketch-sisyphus.is-playing .sk-leg-front .sk-shin {
+    animation: sis-shin 0.46s ease-in-out -0.23s 5 both;
+  }
+  .sketch-sisyphus.is-playing .sk-arms-push {
+    animation: sis-arms-push 4.6s linear forwards;
+  }
+  .sketch-sisyphus.is-playing .sk-arms-cheer {
+    animation: sis-arms-cheer 4.6s linear forwards;
+  }
+  .sketch-sisyphus.is-playing .sketch-caption {
+    animation: sk-caption 4.6s var(--ease) forwards;
   }
 
-  /* Builder: blocks land one by one, the top one wobbles and topples off. */
-  .sketch-builder.is-playing .sk-b1 {
-    animation: bld-drop 3.6s var(--ease) forwards;
+  /* ---------- Guitarist (4.6s) ----------
+     0-58% three tries at the tuning peg, head tilting to listen | 60-90% strum; notes float up |
+     84-100% caption */
+  .sketch-guitar.is-playing .sk-arms-tune {
+    animation: gtr-tune-arm 4.6s linear forwards;
   }
-  .sketch-builder.is-playing .sk-b2 {
-    animation: bld-drop 3.6s var(--ease) 0.45s both;
+  .sketch-guitar.is-playing .sk-arms-play {
+    animation: gtr-play-arm 4.6s linear forwards;
   }
-  .sketch-builder.is-playing .sk-b3 {
-    animation: bld-top 3.6s linear forwards;
+  .sketch-guitar.is-playing .sk-peg {
+    animation: gtr-peg 4.6s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  }
+  .sketch-guitar.is-playing .sk-head-g {
+    animation: gtr-listen 4.6s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  }
+  .sketch-guitar.is-playing .sk-w1 {
+    animation: gtr-wave 4.6s linear forwards;
+  }
+  .sketch-guitar.is-playing .sk-w2 {
+    animation: gtr-wave 4.6s linear 0.12s both;
+  }
+  .sketch-guitar.is-playing .sk-strum {
+    animation: gtr-strum 4.6s forwards;
+  }
+  .sketch-guitar.is-playing .sk-n1 {
+    animation: gtr-note 4.6s var(--ease) forwards;
+    --dx: -4px;
+  }
+  .sketch-guitar.is-playing .sk-n2 {
+    animation: gtr-note 4.6s var(--ease) 0.2s both;
+    --dx: 8px;
+  }
+  .sketch-guitar.is-playing .sk-n3 {
+    animation: gtr-note 4.6s var(--ease) 0.4s both;
+    --dx: 20px;
+  }
+  .sketch-guitar.is-playing .sketch-caption {
+    animation: sk-caption 4.6s var(--ease) forwards;
   }
 }
 
-@keyframes sis-man {
+/* Sisyphus keyframes */
+@keyframes sis-run {
+  0% { transform: none; animation-timing-function: cubic-bezier(0.35, 0, 0.65, 1); }
+  50%, 100% { transform: translateX(140px); }
+}
+@keyframes sis-hop {
+  0%, 51% { transform: none; animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1); }
+  55% { transform: translateY(-5px); animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4); }
+  59%, 100% { transform: none; }
+}
+@keyframes sis-rock-move {
+  0% { transform: none; animation-timing-function: cubic-bezier(0.35, 0, 0.65, 1); }
+  50%, 60% { transform: translateX(140px); animation-timing-function: cubic-bezier(0.55, 0, 0.95, 0.55); }
+  80% { transform: translateX(0); animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1); }
+  84% { transform: translate(-7px, -4px); animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4); }
+  88% { transform: translate(-11px, 0); animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1); }
+  91% { transform: translate(-13px, -1.2px); }
+  94%, 100% { transform: translate(-14px, 0); }
+}
+/* rolling 140 units on r = 11 is ~729 degrees */
+@keyframes sis-rock-spin {
+  0% { transform: none; animation-timing-function: cubic-bezier(0.35, 0, 0.65, 1); }
+  50%, 60% { transform: rotate(729deg); animation-timing-function: cubic-bezier(0.55, 0, 0.95, 0.55); }
+  80% { transform: rotate(0deg); animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1); }
+  94%, 100% { transform: rotate(-73deg); }
+}
+@keyframes sis-thigh {
+  0%, 100% { transform: rotate(28deg); }
+  50% { transform: rotate(-24deg); }
+}
+@keyframes sis-shin {
+  0%, 100% { transform: rotate(-10deg); }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(34deg); }
+  75% { transform: rotate(14deg); }
+}
+@keyframes sis-arms-push {
+  0%, 50% { opacity: 1; }
+  51%, 64% { opacity: 0; }
+  65%, 84% { opacity: 1; }
+  85%, 100% { opacity: 0; }
+}
+/* arms up at the summit, arms down to watch it roll, arms up again: happy anyway */
+@keyframes sis-arms-cheer {
+  0%, 50% { opacity: 0; }
+  51%, 64% { opacity: 1; }
+  65%, 84% { opacity: 0; }
+  85%, 100% { opacity: 1; }
+}
+
+/* Guitarist keyframes */
+@keyframes gtr-tune-arm {
+  0%, 58% { opacity: 1; }
+  59%, 100% { opacity: 0; }
+}
+@keyframes gtr-play-arm {
+  0%, 58% { opacity: 0; }
+  59%, 100% { opacity: 1; }
+}
+@keyframes gtr-peg {
   0% { transform: none; }
-  50%, 100% { transform: translate(142px, -37.4px); }
+  10% { transform: rotate(150deg); }
+  16% { transform: rotate(110deg); }
+  28% { transform: rotate(300deg); }
+  34% { transform: rotate(260deg); }
+  46% { transform: rotate(450deg); }
+  52%, 100% { transform: rotate(420deg); }
 }
-@keyframes sis-boulder {
-  0% { transform: none; }
-  50%, 56% { transform: translate(142px, -37.4px) rotate(300deg); }
-  82%, 100% { transform: none; }
+@keyframes gtr-listen {
+  0%, 8% { transform: none; }
+  13%, 20% { transform: rotate(-16deg); }
+  26%, 31% { transform: none; }
+  37%, 44% { transform: rotate(-16deg); }
+  50%, 56% { transform: rotate(10deg); }
+  62%, 100% { transform: rotate(-4deg); }
 }
-@keyframes bld-drop {
-  0% { opacity: 0; transform: translateY(-34px); }
-  6% { opacity: 1; }
-  14%, 100% { opacity: 1; transform: none; }
+@keyframes gtr-wave {
+  0%, 9% { opacity: 0; }
+  12% { opacity: 1; }
+  18%, 27% { opacity: 0; }
+  30% { opacity: 1; }
+  36%, 45% { opacity: 0; }
+  48% { opacity: 1; }
+  54%, 100% { opacity: 0; }
 }
-@keyframes bld-top {
-  0%, 25% { opacity: 0; transform: translateY(-34px); }
-  28% { opacity: 1; }
-  37% { opacity: 1; transform: none; }
-  44% { transform: rotate(-7deg); }
-  50% { transform: rotate(8deg); }
-  54% { transform: translate(3px, 0) rotate(14deg); }
-  72%, 100% { opacity: 1; transform: translate(26px, 22px) rotate(180deg); }
+@keyframes gtr-strum {
+  0%, 60% { transform: none; }
+  64% { transform: rotate(-22deg); }
+  68% { transform: rotate(6deg); }
+  72% { transform: rotate(-22deg); }
+  76% { transform: rotate(6deg); }
+  80% { transform: rotate(-22deg); }
+  85%, 100% { transform: none; }
 }
-@keyframes sk-arms-work {
-  0%, 80% { opacity: 1; }
-  84%, 100% { opacity: 0; }
+@keyframes gtr-note {
+  0%, 64% { opacity: 0; transform: translate(0, 4px) rotate(0deg); }
+  70% { opacity: 1; }
+  92% { opacity: 1; transform: translate(var(--dx), -18px) rotate(-12deg); }
+  100% { opacity: 0.85; transform: translate(var(--dx), -22px) rotate(-8deg); }
 }
-@keyframes sk-arms-shrug {
-  0%, 80% { opacity: 0; }
-  84%, 100% { opacity: 1; }
-}
+
 @keyframes sk-caption {
-  0%, 82% { opacity: 0; transform: translateY(4px); }
+  0%, 84% { opacity: 0; transform: translateY(4px); }
   100% { opacity: 1; transform: none; }
 }
 
@@ -2367,8 +2562,8 @@ main > section:first-child {
   color: var(--ink);
   cursor: pointer;
   transition:
-    border-color 0.25s var(--ease),
-    opacity 0.25s var(--ease);
+    border-color var(--t-fast) var(--ease),
+    opacity var(--t-fast) var(--ease);
 }
 .film-arrows button:hover:not(:disabled) {
   border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
@@ -2408,7 +2603,7 @@ main > section:first-child {
 .feature-card {
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--r-lg);
   background:
     radial-gradient(circle at 100% 0%, var(--accent-soft), transparent 45%),
     var(--surface);
@@ -2422,7 +2617,7 @@ main > section:first-child {
   justify-content: space-between;
   gap: 12px;
   min-height: 44px;
-  padding: 8px 20px;
+  padding: 8px clamp(20px, 3vw, 26px);
   border-bottom: 1.5px dashed var(--line); /* perforation */
   color: var(--muted);
   font: 500 11px/1.4 var(--mono);
@@ -2441,7 +2636,7 @@ main > section:first-child {
   border-bottom: 0;
 }
 .feature-body {
-  padding: 24px 20px 26px;
+  padding: clamp(20px, 3vw, 26px);
 }
 .feature-body.has-visual {
   display: grid;
@@ -2493,7 +2688,7 @@ main > section:first-child {
   bottom: 0;
   width: min(14vw, 140px);
   pointer-events: none;
-  transition: opacity 0.4s var(--ease);
+  transition: opacity var(--t-slow) var(--ease);
 }
 .film-viewport::before {
   left: 0;
@@ -2614,8 +2809,8 @@ main > section:first-child {
     0 1px 2px rgba(0, 0, 0, 0.12),
     0 16px 34px -18px rgba(0, 0, 0, 0.45);
   transition:
-    transform 0.5s var(--ease),
-    box-shadow 0.5s var(--ease);
+    transform var(--t-slow) var(--ease),
+    box-shadow var(--t-slow) var(--ease);
   scroll-snap-align: center;
 }
 .print img {
@@ -2708,7 +2903,7 @@ main > section:first-child {
   color: var(--ink);
   font: 600 13.5px/1 var(--sans);
   cursor: pointer;
-  transition: border-color 0.3s var(--ease);
+  transition: border-color var(--t-fast) var(--ease);
 }
 .show-more:hover {
   border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
@@ -2745,6 +2940,13 @@ main > section:first-child {
    Contact + footer
    ========================================================================== */
 
+.contact-note {
+  max-width: 56ch;
+  margin: -14px 0 28px;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 2.2vw, 1.12rem);
+  line-height: 1.6;
+}
 .mailbox {
   display: flex;
   flex-wrap: wrap;
@@ -2762,8 +2964,8 @@ main > section:first-child {
   overflow-wrap: anywhere;
   background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 2px no-repeat;
   transition:
-    color 0.3s var(--ease),
-    background-size 0.6s var(--ease);
+    color var(--t-fast) var(--ease),
+    background-size var(--t-slow) var(--ease);
 }
 .mail-addr:hover {
   color: var(--accent);
@@ -2785,9 +2987,9 @@ main > section:first-child {
   text-transform: uppercase;
   cursor: pointer;
   transition:
-    color 0.25s var(--ease),
-    border-color 0.25s var(--ease),
-    transform 0.2s var(--ease);
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease);
 }
 .copy:hover {
   color: var(--accent);
@@ -2818,9 +3020,9 @@ main > section:first-child {
   font-size: 15px;
   font-weight: 600;
   transition:
-    border-color 0.3s var(--ease),
-    background-color 0.3s var(--ease),
-    transform 0.4s var(--ease);
+    border-color var(--t-fast) var(--ease),
+    background-color var(--t-fast) var(--ease),
+    transform var(--t-slow) var(--ease);
 }
 .btn:hover {
   border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
@@ -2834,8 +3036,8 @@ main > section:first-child {
   margin-left: -2px;
   opacity: 0.55;
   transition:
-    opacity 0.3s var(--ease),
-    transform 0.4s var(--ease);
+    opacity var(--t-fast) var(--ease),
+    transform var(--t-slow) var(--ease);
 }
 .btn:hover .btn-ext {
   opacity: 1;

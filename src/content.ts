@@ -116,7 +116,7 @@ export type Interest = {
   /** Optional pull quote shown under the body. */
   quote?: { text: string; by: string }
   /** A little drawing at the bottom of the tile, and its caption. */
-  sketch?: 'builder' | 'sisyphus'
+  sketch?: 'guitar' | 'sisyphus'
   joke?: string
   /** Optional photos (e.g. dishes), shown as a fanned hand of cards. Files live in /public/life. */
   photos?: Array<{ src: string; alt: string; label: string }>
@@ -130,7 +130,7 @@ export const site = {
   name: 'Vinol Tauro',
   location: 'Dublin, Ireland',
   /** Small mono line at the very top of the hero: what I do, and where. */
-  kicker: { role: 'full-stack · devops · sre engineer', place: 'dublin, ireland' },
+  kicker: { role: 'sre · devops · cloud · full-stack engineer', place: 'dublin, ireland' },
 
   /** Quiet keyword line under the hero bio: what infra/SRE recruiters scan for. */
   heroStack: ['AWS', 'Terraform', 'Kubernetes', 'CI/CD', 'Observability', 'On-call'],
@@ -710,15 +710,15 @@ export const site = {
 
   /** Opening line of Outside of work, in my own words. */
   lifeIntro:
-    "Dublin has been kind to me. These days I work part-time as a customer assistant at Holland & Barrett while I look for my next engineering role. Outside of that, you’ll find me building something, reading, eating my way around the city, or out photographing it.",
+    "Dublin has been kind to me. These days I work part-time as a customer assistant at Holland & Barrett while I look for my next engineering role. Outside of that, you’ll find me playing guitar, reading, eating my way around the city, or out photographing it.",
 
   life: [
     {
-      icon: 'code',
-      title: 'I love to build',
-      body: "I’ve always loved to build and create. Writing code, composing music (I’m a trained classical guitarist), anything that lets the creative energy out. It’s the same itch that got me into engineering in the first place.",
-      sketch: 'builder',
-      joke: 'Me, deploying on a Friday.',
+      icon: 'music',
+      title: 'I play classical guitar',
+      body: "I’m a trained classical guitarist, and I’ve always loved to build and create: composing music, writing code, anything that lets the creative energy out. It’s the same itch that got me into engineering in the first place.",
+      sketch: 'guitar',
+      joke: 'Me, tuning for 20 minutes to play for two.',
     },
     {
       icon: 'books',
@@ -760,6 +760,8 @@ export const site = {
 
   contact: {
     heading: 'Help my Job Apply bot retire.',
+    /** One line under the heading: open to roles and to building together, no titles. */
+    note: 'Open to SRE, DevOps, cloud and full-stack roles, and always happy to build something with good people. If you’re working on something interesting, I’d love to hear about it.',
     email: 'vinoltauro99@gmail.com',
     github: 'https://github.com/vinoltauro',
     linkedin: 'https://linkedin.com/in/vinoltauro',
