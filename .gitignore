@@ -1,0 +1,7 @@
+node_modules
+dist
+dist-ssr
+.DS_Store
+.vercel
+# Private originals (photos, PDFs, resume source). Never published.
+reference/

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Vinol Tauro · Curious. Agnostic. Autonomous.</title>
+    <meta name="description" content="Vinol Tauro is a full-stack, DevOps and SRE engineer in Dublin. Frontend, backend, and the cloud underneath: AWS, Terraform, Kubernetes, CI/CD and observability." />
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F5F4F0" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0D0E11" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:title" content="Vinol Tauro · Curious. Agnostic. Autonomous." />
+    <meta property="og:description" content="Full-stack, DevOps and SRE engineer in Dublin. Frontend, backend, and the cloud underneath." />
+    <meta property="og:image" content="%VITE_SITE_URL%/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vinol Tauro. Curious. Agnostic. Autonomous. Full-stack, DevOps and SRE engineer in Dublin, Ireland." />
+    <meta property="og:site_name" content="Vinol Tauro" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vinol Tauro · Curious. Agnostic. Autonomous." />
+    <meta name="twitter:description" content="Full-stack, DevOps and SRE engineer in Dublin. Frontend, backend, and the cloud underneath." />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/og.png" />
+
+    <!-- Runs before paint: apply saved theme (no flash), flag JS for progressive-enhancement motion.
+         Failsafe: if the app never boots, drop the flag so nothing stays hidden. -->
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        try {
+          var t = localStorage.getItem('vt-theme');
+          if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+          if (localStorage.getItem('vt-skim') === '1') d.setAttribute('data-skim', '');
+        } catch (e) {}
+        setTimeout(function () {
+          if (window.__vtReady) return;
+          d.classList.remove('js');
+          var s = document.createElement('style');
+          s.textContent = '[style*="opacity:0"]{opacity:1!important;transform:none!important;filter:none!important}.role-details{height:auto!important}.role-toggle{display:none!important}';
+          document.head.appendChild(s);
+        }, 4000);
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+    <!-- Without JS, show every scroll-reveal element at rest instead of its hidden start state. -->
+    <noscript><style>[style*="opacity:0"]{opacity:1!important;transform:none!important;filter:none!important}.role-details{height:auto!important}.role-toggle{display:none!important}</style></noscript>
+  </head>
+  <body>
+    <div id="root"><!--app--></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
