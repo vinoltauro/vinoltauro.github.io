@@ -1,6 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import { App } from './App'
+// Self-hosted fonts (latin only; the browser fetches a face only when a page needs it).
+import '@fontsource-variable/bricolage-grotesque/opsz.css'
+import '@fontsource/hanken-grotesk/latin-400.css'
+import '@fontsource/hanken-grotesk/latin-500.css'
+import '@fontsource/hanken-grotesk/latin-600.css'
+import '@fontsource/jetbrains-mono/latin-400.css'
+import '@fontsource/jetbrains-mono/latin-500.css'
 import './styles.css'
 
 declare global {

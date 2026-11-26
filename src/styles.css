@@ -15,7 +15,7 @@
   --on-accent: #ffffff;
   --bar: rgba(245, 244, 240, 0.72);
 
-  --display: 'Bricolage Grotesque', Georgia, serif;
+  --display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', Georgia, serif;
   --sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
