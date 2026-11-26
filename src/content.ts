@@ -325,9 +325,6 @@ export const site = {
         { text: '+10.8 → −21', label: 'Pong score after learning Breakout, unprotected' },
         { text: '~3×', label: 'longer before forgetting with full superposition' },
         { text: '8.1 vs −5.4', label: 'Pong kept with keys vs without, on a slowed trunk' },
-        { text: '~2×', label: 'retention of the middle game in a three-game run' },
-        { count: { to: 3 }, label: 'seeds on every central experiment, ranges reported' },
-        { text: '< 2', label: 'GPU-days to find three design faults with pre-stated checks' },
       ],
       detailsLabel: 'What I built & found',
       details: [
@@ -386,12 +383,6 @@ export const site = {
         { src: '/projects/elitecode-tutor.webp', alt: 'The EliteCode editor with EliteBot: it explains a Python syntax error on line 19 and hints at a logic error without giving the answer', width: 1168, height: 820 },
       ],
       mediaLayout: 'stack',
-      metrics: [
-        { count: { to: 15 }, label: 'adaptive mechanisms working as one system' },
-        { text: '~200 ms', label: 'first dashboard render, slow signals stream in' },
-        { count: { to: 3 }, label: 'model LLM fallback chain behind the tutor' },
-        { count: { to: 6 }, label: 'languages run in a sandboxed Judge0' },
-      ],
       detailsLabel: 'How it works',
       details: [
         {
@@ -447,12 +438,6 @@ export const site = {
       media: [
         { src: '/projects/job-apply-telegram-start.webp', alt: "The Job Apply Telegram bot’s command menu: scrape job sources, list top jobs, generate a tailored CV, email or cover letter, and apply", width: 640, height: 958 },
         { src: '/projects/job-apply-telegram-jobs.webp', alt: 'The /jobs command in Telegram listing part-time roles with commute time, a link, and Save, Dismiss and Apply buttons', width: 640, height: 958 },
-      ],
-      metrics: [
-        { text: '20+', label: 'job sources behind one scraper registry' },
-        { text: '1 page', label: 'tailored, ATS-checked CV for every job' },
-        { count: { to: 0 }, label: 'invented facts: CVs only use my real profile' },
-        { count: { to: 14 }, label: 'Telegram commands to run it from my phone' },
       ],
       detailsLabel: 'How it works',
       details: [
@@ -513,10 +498,8 @@ export const site = {
       metrics: [
         { text: '808 → 3 ms', label: 'P95 latency once views are pre-rendered' },
         { count: { to: 62, suffix: '%' }, label: 'more throughput from pre-rendering' },
-        { text: '250k', label: 'synthetic training images for the YOLO attacker' },
         { text: '20/20', label: 'solved by YOLO with dense camera sweeps' },
         { text: '~30%', label: 'solved by the Gemini agent over 100 attacks' },
-        { count: { to: 3 }, label: 'attackers, from spam bot to vision model' },
       ],
       detailsLabel: 'How it works',
       details: [
@@ -577,11 +560,6 @@ export const site = {
       media: [
         { src: '/projects/techopoly-board.webp', alt: 'The Techopoly game board, a Monopoly board of tech companies such as AWS, OpenAI, NVIDIA and Spotify, with a Roll Dice button in the centre', width: 1100, height: 1100 },
         { src: '/projects/techopoly-home.webp', alt: "Techopoly’s home screen: multiplayer monopoly for people who ship things, with Host a Game and Join with Code buttons", width: 1100, height: 999 },
-      ],
-      metrics: [
-        { text: '0', label: 'game servers: the host’s tab is the authority' },
-        { text: '40+', label: 'chaos events, shuffled with no repeats' },
-        { count: { to: 3 }, label: 'boards: Tech, Cities and Corps' },
       ],
       detailsLabel: 'How it works',
       details: [

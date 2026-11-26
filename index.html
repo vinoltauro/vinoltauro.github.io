@@ -3,9 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Vinol Tauro · Curious. Agnostic. Autonomous.</title>
-    <meta name="description" content="Vinol Tauro is a full-stack, DevOps and SRE engineer in Dublin. Frontend, backend, and the cloud underneath: AWS, Terraform, Kubernetes, CI/CD and observability." />
+    <title>Vinol Tauro · Full-stack, DevOps & SRE Engineer in Dublin</title>
+    <meta name="description" content="Vinol Tauro is a full-stack, DevOps and SRE engineer in Dublin with an MSc in Computer Science from Trinity College Dublin. AWS, Terraform, Kubernetes, CI/CD, observability, React and Python." />
     <link rel="canonical" href="%VITE_SITE_URL%/" />
+    <!-- Structured data: tells search engines who this page is about. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "%VITE_SITE_URL%/#person",
+            "name": "Vinol Tauro",
+            "url": "%VITE_SITE_URL%/",
+            "image": "%VITE_SITE_URL%/og-v2.png",
+            "jobTitle": "Full-stack, DevOps and SRE Engineer",
+            "description": "Full-stack, DevOps and SRE engineer in Dublin. Frontend, backend, and the cloud underneath.",
+            "address": { "@type": "PostalAddress", "addressLocality": "Dublin", "addressCountry": "IE" },
+            "alumniOf": [
+              { "@type": "CollegeOrUniversity", "name": "Trinity College Dublin", "url": "https://www.tcd.ie/" },
+              { "@type": "CollegeOrUniversity", "name": "NMAM Institute of Technology", "url": "https://nitte.edu.in/nmamit/" }
+            ],
+            "knowsAbout": ["AWS", "Terraform", "Kubernetes", "CI/CD", "Site Reliability Engineering", "Observability", "React", "TypeScript", "Python", "Reinforcement Learning"],
+            "sameAs": ["https://github.com/vinoltauro", "https://linkedin.com/in/vinoltauro"]
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "%VITE_SITE_URL%/#page",
+            "url": "%VITE_SITE_URL%/",
+            "name": "Vinol Tauro · Full-stack, DevOps & SRE Engineer in Dublin",
+            "mainEntity": { "@id": "%VITE_SITE_URL%/#person" }
+          }
+        ]
+      }
+    </script>
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F5F4F0" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0D0E11" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
